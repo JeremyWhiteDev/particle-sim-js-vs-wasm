@@ -3,8 +3,8 @@ package particle
 type Particle struct {
 	PositionX float64
 	PositionY float64
-	VelocityX int
-	VelocityY int
+	VelocityX int // the change in position per frame
+	VelocityY int // the change in position per frame
 	Diameter  float64
 }
 

@@ -20,6 +20,11 @@ const (
 	RANDOM
 )
 
+const (
+	MAX_VELOCITY = 10
+	MIN_VELOCITY = -10
+)
+
 func (s *Simulator) generateParticles(particleCount int) {
 	// grid dimension reresents both x/y of the grid.
 	gridDim := math.Ceil(math.Sqrt(float64(particleCount)))
@@ -78,14 +83,14 @@ func randomVelocity(direction int) int {
 
 	switch direction {
 	case NEGATIVE:
-		min = -10
+		min = MIN_VELOCITY
 		max = 0
 	case POSITIVE:
 		min = 0
-		max = 10
+		max = MAX_VELOCITY
 	case RANDOM:
-		min = -10
-		max = 10
+		min = MIN_VELOCITY
+		max = MAX_VELOCITY
 	}
 
 	rangeSize := max - min + 1
@@ -108,9 +113,24 @@ func (s *Simulator) updatePartices() {
 		s.handleParticleCollision(p)
 	}
 	// TODO consolidate to one loop
-	// for _, p := range s.particles {
-	// 	s.handleParticleCollision(p)
-	// }
+	for _, p := range s.particles {
+		s.updateParticlePositions(p)
+	}
+}
+
+func (s *Simulator) updateParticlePositions(p *particle.Particle) {
+	panic("unimplemented")
+	// need to take the x/y and turn them into new xy...
+
+	// so if we have a velocity of 1/1, we are going to move 1 and 1.
+
+	// I think the velocity rang is going to mess me up, because 5/5 is the same as 1/1, which is the same as .5/.5.... because right now
+	// I am ignoring speed. But if I don't ignore speed, then the that makes this calucaltion much easier, because I start using "pixels" as my
+	// measurement. so all I have to do is add the number of pixels I want per "tick" to each direction.
+	// but maybe I do have the velocity be less drastic, like <1 pixel per frame?
+
+	// will adjust the min/max based on what this acutally looks like
+
 }
 
 // TODO there's a couple naive items with this implementation:
@@ -119,8 +139,8 @@ func (s *Simulator) updatePartices() {
 
 func (s *Simulator) handleParticleCollision(p *particle.Particle) {
 
-	fmt.Println(p.RightEdge(), "right edge")
-	fmt.Println(float64(s.canvasWidth), "right edge")
+	// fmt.Println(p.RightEdge(), "right edge")
+	// fmt.Println(float64(s.canvasWidth), "right edge")
 	// fmt.Println(currParticle.RightEdge(), "curr particle right edge")
 	// fmt.Println(p.LeftEdge(), "p left edge")
 
