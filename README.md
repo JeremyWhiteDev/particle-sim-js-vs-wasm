@@ -1,6 +1,6 @@
 # Particle Simulator JS vs WASM
 
-A basic web app to demonstate whether differences between running basic loops/math calculations in WASM vs JS.
+A basic web app to demonstrate differences between running basic loops/math calculations in WASM vs JS.
 
 ### Intro to Web Assembly
 
