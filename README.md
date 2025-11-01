@@ -16,7 +16,7 @@ I was curious if I could write an application that I could actually see a differ
 
 ### Hypothesis
 
-For a simple particle simulator application (not a full physics engine) I expect to see _no difference_ between WASM and JS. I believe that the sorts of computations I will be doing, will be
+For a simple particle simulator application (not a full physics engine) I expect to see _no difference_ between WASM and JS. I believe that the sorts of computations I will be doing, will be simple enough that the javascript engine that I use (V8) will be more than capable of running this logic.
 
 ### Results
 ...
